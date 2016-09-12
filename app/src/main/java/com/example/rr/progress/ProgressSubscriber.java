@@ -1,4 +1,4 @@
-package com.example.rr;
+package com.example.rr.progress;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.content.DialogInterface;
 import android.widget.Toast;
 
 
-import com.example.rr.entity.UserInfos;
+import com.example.rr.listener.SubscriberOnNextListener;
 
 import rx.Subscriber;
 
