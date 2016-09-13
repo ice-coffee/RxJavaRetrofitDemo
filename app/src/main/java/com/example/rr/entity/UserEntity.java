@@ -1,17 +1,15 @@
 package com.example.rr.entity;
 
-import java.util.List;
-
 /**
  * 相同格式的请求返回数据处理
  */
-public class BaseEntity<T>
+public class UserEntity
 {
     private String code;
 
     private String msg;
 
-    private T data;
+    private UserInfos data;
 
     public String getCode()
     {
@@ -33,12 +31,12 @@ public class BaseEntity<T>
         this.msg = msg;
     }
 
-    public T getData()
+    public UserInfos getData()
     {
         return data;
     }
 
-    public void setData(T data)
+    public void setData(UserInfos data)
     {
         this.data = data;
     }

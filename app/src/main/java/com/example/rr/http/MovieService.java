@@ -1,11 +1,10 @@
 package com.example.rr.http;
 
-import com.example.rr.entity.BaseEntity;
+import com.example.rr.entity.UserEntity;
 
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -15,5 +14,5 @@ public interface MovieService
 {
     @FormUrlEncoded
     @POST("/api/?m=api&c=&a=login_do")
-    Observable<BaseEntity> getTopMovie(@Field("mobile") String mobile, @Field("password") String password);
+    Observable<UserEntity> getTopMovie(@Field("mobile") String mobile, @Field("password") String password);
 }
