@@ -14,6 +14,7 @@ gen/
 out/
 
 # Gradle files
+.idea/*
 .gradle/
 build/
 
@@ -34,7 +35,6 @@ captures/
 
 # Intellij
 *.iml
-.idea/
 
 # Keystore files
 *.jks
