@@ -2,7 +2,7 @@ package com.example.rr.Model;
 
 import com.example.rr.entity.UserEntity;
 import com.example.rr.http.HttpMethod;
-import com.example.rr.http.MovieService;
+import com.example.rr.http.LoginService;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -16,9 +16,9 @@ public class LoginApi
 {
     public void loginRequest(Subscriber<UserEntity> subscriber, String userName, String password)
     {
-        MovieService movieService = HttpMethod.getInstance().create(MovieService.class);
+        LoginService loginService = HttpMethod.getInstance().create(LoginService.class);
 
-        Observable observable = movieService.getTopMovie(userName, password);
+        Observable observable = loginService.getTopMovie(userName, password);
         /**
          * 设置事件发生在新的线程, 也可以设置为"Schedulers.io()"
          * 事件处理在主线程中

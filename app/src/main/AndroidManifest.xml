@@ -14,9 +14,6 @@
                 <category android:name="ANDROID.INTENT.CATEGORY.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <activity android:name=".rxjava.RxJavaActivity"/>
-        <activity android:name=".retrofit.RetrofitActivity"/>
     </application>
 
 </manifest>

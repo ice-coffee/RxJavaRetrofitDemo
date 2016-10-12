@@ -10,7 +10,7 @@ import rx.Observable;
 /**
  * Created by mzp on 2016/9/6.
  */
-public interface MovieService
+public interface LoginService
 {
     @FormUrlEncoded
     @POST("/api/?m=api&c=&a=login_do")
