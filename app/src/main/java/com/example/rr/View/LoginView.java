@@ -1,6 +1,6 @@
 package com.example.rr.View;
 
-import com.example.rr.entity.UserInfos;
+import com.example.rr.Model.UserInfos;
 
 /**
  * Created by mzp on 2016/9/13.

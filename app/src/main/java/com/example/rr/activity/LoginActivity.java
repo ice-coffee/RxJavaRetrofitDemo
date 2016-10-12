@@ -8,9 +8,8 @@ import android.widget.Toast;
 
 import com.example.rr.R;
 import com.example.rr.View.LoginView;
-import com.example.rr.entity.UserInfos;
+import com.example.rr.Model.UserInfos;
 import com.example.rr.presenter.LoginPresenter;
-import com.example.rr.presenter.LoginPresenterImpel;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -37,7 +36,7 @@ public class LoginActivity extends Activity implements LoginView
         etPassword = (EditText) findViewById(R.id.et_password);
         btLogin = (Button) findViewById(R.id.bt_login);
 
-        loginPresenter = new LoginPresenterImpel(this, this);
+        loginPresenter = new LoginPresenter(this, this);
     }
 
     @OnClick(R.id.bt_login)

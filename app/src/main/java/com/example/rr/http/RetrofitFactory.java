@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * 1.这样的话HttpMethod和Service耦合的太严重了
  */
-public class HttpMethod
+public class RetrofitFactory
 {
     private final static String BASEURL = "http://www.oyochou.com/";
 
@@ -19,7 +19,7 @@ public class HttpMethod
 
     private static Retrofit retrofit;
 
-    private HttpMethod()
+    private RetrofitFactory()
     {
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
         httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
@@ -45,7 +45,7 @@ public class HttpMethod
     {
         if (null == retrofit)
         {
-            new HttpMethod();
+            new RetrofitFactory();
         }
 
         return retrofit;

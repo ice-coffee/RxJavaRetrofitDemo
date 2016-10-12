@@ -1,4 +1,4 @@
-package com.example.rr.entity;
+package com.example.rr.Model;
 
 /**
  * Created by mzp on 2016/8/22.

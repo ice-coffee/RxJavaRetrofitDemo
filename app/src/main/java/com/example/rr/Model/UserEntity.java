@@ -1,4 +1,4 @@
-package com.example.rr.entity;
+package com.example.rr.Model;
 
 /**
  * 相同格式的请求返回数据处理
