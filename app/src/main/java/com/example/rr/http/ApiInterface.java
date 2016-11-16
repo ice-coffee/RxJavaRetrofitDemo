@@ -1,6 +1,6 @@
 package com.example.rr.http;
 
-import com.example.rr.Model.UserEntity;
+import com.example.rr.Model.BaseEntity;
 
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -13,6 +13,6 @@ import rx.Observable;
 public interface ApiInterface
 {
     @FormUrlEncoded
-    @POST("/api/?m=api&c=&a=login_do")
-    Observable<UserEntity> getTopMovie(@Field("mobile") String mobile, @Field("password") String password);
+    @POST(HttpContents.API_LOGIN)
+    Observable<BaseEntity> getTopMovie(@Field("mobile") String mobile, @Field("password") String password);
 }

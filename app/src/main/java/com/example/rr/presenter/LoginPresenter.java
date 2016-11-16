@@ -1,14 +1,16 @@
 package com.example.rr.presenter;
 
 import android.content.Context;
+import android.widget.Toast;
 
+import com.example.rr.Model.UserInfos;
 import com.example.rr.http.ApiService;
 import com.example.rr.View.LoginView;
-import com.example.rr.Model.UserEntity;
 import com.example.rr.http.ApiInterface;
 import com.example.rr.http.RetrofitFactory;
-import com.example.rr.listener.SubscriberOnNextListener;
-import com.example.rr.progress.ProgressSubscriber;
+import com.example.rr.listener.SubscriberListener;
+import com.example.rr.http.HttpRequestSubscriber;
+import com.google.gson.Gson;
 
 import rx.Observable;
 
@@ -25,21 +27,27 @@ public class LoginPresenter
 
     private ApiService apiService;
 
-    private SubscriberOnNextListener<UserEntity> onNextListener;
+    private SubscriberListener onNextListener;
 
-    public LoginPresenter(Context context, final LoginView loginView)
+    public LoginPresenter(final Context context, final LoginView loginView)
     {
         this.context = context;
         this.loginView = loginView;
 
         apiService = new ApiService();
 
-        onNextListener = new SubscriberOnNextListener<UserEntity>()
+        onNextListener = new SubscriberListener()
         {
             @Override
-            public void onNext(UserEntity userEntity)
+            public void onSuccess(String dataMsg)
             {
-                loginView.loginSuccess(userEntity.getData());
+                loginView.loginSuccess(new Gson().fromJson(dataMsg, UserInfos.class));
+            }
+
+            @Override
+            public void onError(String errorMsg)
+            {
+                Toast.makeText(context, errorMsg, Toast.LENGTH_SHORT).show();
             }
         };
     }
@@ -50,6 +58,6 @@ public class LoginPresenter
 
         Observable observable = apiInterface.getTopMovie(loginView.getUserName(), loginView.getPassword());
 
-        apiService.ApiRequest(new ProgressSubscriber<UserEntity>(context, onNextListener), observable);
+        apiService.ApiRequest(new HttpRequestSubscriber(context, onNextListener), observable);
     }
 }

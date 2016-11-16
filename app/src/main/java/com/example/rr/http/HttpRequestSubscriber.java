@@ -1,4 +1,4 @@
-package com.example.rr.progress;
+package com.example.rr.http;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -6,27 +6,30 @@ import android.content.DialogInterface;
 import android.widget.Toast;
 
 
-import com.example.rr.listener.SubscriberOnNextListener;
+import com.example.rr.Model.BaseEntity;
+import com.example.rr.listener.SubscriberListener;
+import com.example.rr.weight.ProgressDialogWeight;
+import com.google.gson.Gson;
 
 import rx.Subscriber;
 
 /**
  * Created by mzp on 2016/9/11.
  */
-public class ProgressSubscriber<T> extends Subscriber<T> implements ProgressDialog.OnCancelListener
+public class HttpRequestSubscriber extends Subscriber<BaseEntity> implements ProgressDialog.OnCancelListener
 {
     private Context context;
 
-    private ProgressDialogHandler pdh;
+    private ProgressDialogWeight pdh;
 
-    private SubscriberOnNextListener onNextListener;
+    private SubscriberListener onNextListener;
 
-    public ProgressSubscriber(Context context, SubscriberOnNextListener onNextListener)
+    public HttpRequestSubscriber(Context context, SubscriberListener onNextListener)
     {
         this.context = context;
         this.onNextListener = onNextListener;
 
-        pdh = ProgressDialogHandler.getInstance(context, this);
+        pdh = ProgressDialogWeight.getInstance(context, this);
     }
 
     @Override
@@ -50,11 +53,21 @@ public class ProgressSubscriber<T> extends Subscriber<T> implements ProgressDial
     }
 
     @Override
-    public void onNext(T t)
+    public void onNext(BaseEntity baseEntity)
     {
+        //对请求是否得到正确相应做出判断
         if (null != onNextListener)
         {
-            onNextListener.onNext(t);
+            if (HttpContents.SUCCESS.equals(baseEntity.getCode()))
+            {
+                Gson gson = new Gson();
+                String infoStr = gson.toJson(baseEntity.getData());
+                onNextListener.onSuccess(infoStr);
+            }
+            else
+            {
+                onNextListener.onSuccess(baseEntity.getMsg());
+            }
         }
     }
 

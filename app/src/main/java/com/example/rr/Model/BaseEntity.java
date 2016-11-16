@@ -1,24 +1,26 @@
 package com.example.rr.Model;
 
 /**
- * 相同格式的请求返回数据处理
+ * Created by mzp on 2016/11/16.
  */
-public class UserEntity
+
+public class BaseEntity
 {
     private String code;
 
     private String msg;
 
-    private UserInfos data;
+    private Object data;
 
     public String getCode()
     {
         return code;
     }
 
-    public void setCode(String code)
+    public BaseEntity setCode(String code)
     {
         this.code = code;
+        return this;
     }
 
     public String getMsg()
@@ -26,18 +28,20 @@ public class UserEntity
         return msg;
     }
 
-    public void setMsg(String msg)
+    public BaseEntity setMsg(String msg)
     {
         this.msg = msg;
+        return this;
     }
 
-    public UserInfos getData()
+    public Object getData()
     {
         return data;
     }
 
-    public void setData(UserInfos data)
+    public BaseEntity setData(Object data)
     {
         this.data = data;
+        return this;
     }
 }

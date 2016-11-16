@@ -1,4 +1,4 @@
-package com.example.rr.progress;
+package com.example.rr.weight;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -6,20 +6,20 @@ import android.content.Context;
 /**
  *
  */
-public class ProgressDialogHandler extends ProgressDialog
+public class ProgressDialogWeight extends ProgressDialog
 {
-    private static ProgressDialogHandler pdh;
+    private static ProgressDialogWeight pdh;
 
-    public ProgressDialogHandler(Context context)
+    public ProgressDialogWeight(Context context)
     {
         super(context);
     }
 
-    public synchronized static ProgressDialogHandler getInstance(Context context, OnCancelListener onCancelListener)
+    public synchronized static ProgressDialogWeight getInstance(Context context, OnCancelListener onCancelListener)
     {
         if (null == pdh)
         {
-            pdh = new ProgressDialogHandler(context);
+            pdh = new ProgressDialogWeight(context);
             pdh.setCancelable(true);
             pdh.setOnCancelListener(onCancelListener);
         }

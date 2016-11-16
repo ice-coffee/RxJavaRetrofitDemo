@@ -17,7 +17,7 @@ import butterknife.OnClick;
 /**
  * Created by mzp on 2016/9/6.
  */
-public class LoginActivity extends Activity implements LoginView
+public class MainActivity extends Activity implements LoginView
 {
     private LoginPresenter loginPresenter;
 
@@ -29,7 +29,7 @@ public class LoginActivity extends Activity implements LoginView
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
         etUserName = (EditText) findViewById(R.id.et_username);
@@ -60,6 +60,6 @@ public class LoginActivity extends Activity implements LoginView
     @Override
     public void loginSuccess(UserInfos userInfos)
     {
-        Toast.makeText(LoginActivity.this, "requestSuccess" + userInfos.getMobile(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, "requestSuccess" + userInfos.getMobile(), Toast.LENGTH_SHORT).show();
     }
 }

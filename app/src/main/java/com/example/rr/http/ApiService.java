@@ -1,7 +1,5 @@
 package com.example.rr.http;
 
-import com.example.rr.Model.UserEntity;
-
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -12,7 +10,7 @@ import rx.schedulers.Schedulers;
  */
 public class ApiService
 {
-    public void ApiRequest(Subscriber<UserEntity> subscriber, Observable observable)
+    public void ApiRequest(Subscriber subscriber, Observable observable)
     {
         /**
          * 设置事件发生在新的线程, 也可以设置为"Schedulers.io()"
